@@ -5,12 +5,14 @@ class KeyMap(base.KeyMap):
     def __init__(self):
         self.exe_name = ""
         self.class_name = ""
-        
-        self.initialize_app_mode()
-    
-    def initialize_app_mode(self):
 
-    def clear_app_mode(self):
+    # def initialize_app_mode(self):
+        
+    # def initialize_nomal_mode(self):
+    
+    # def initialize_u0_mode(self):
+    
+    # def initialize_u1_mode(self):
 
     # 新規作成、削除
     # def n(self):

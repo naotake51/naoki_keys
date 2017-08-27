@@ -5,14 +5,13 @@ class KeyMap(editor.KeyMap):
     def __init__(self):
         self.exe_name = "atom.exe"
         self.class_name = "Chrome_WidgetWin_1"
-        
-        self.initialize_app_mode()
     
     def initialize_app_mode(self):
         self.MOVING_TEXT_MODE = 0
         self.SELECTING_TEXT_MODE = 1
         self.SELECTING_KUKEI_TEXT_MODE = 2
         self.cursor_mode = self.MOVING_TEXT_MODE
+        send("Esc")
 
     # def extend_configure(self, app_keymap):
         # #Jumpy用

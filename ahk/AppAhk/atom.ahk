@@ -141,7 +141,7 @@ r::
 return
 t::
 	Send, ^d
-  Send, ^!t ;;翻訳機能実行
+;;  Send, ^!t ;;翻訳機能実行
 return
 +t::
 	Send, ^u
@@ -205,10 +205,12 @@ k::
 	Send, {Down}
 return
 j::
-	Send, ^{PgUp}
+	Send, {Left}
+;;	Send, ^{PgUp}
 return
 l::
-	Send, ^{PgDn}
+	Send, {Right}
+;;	Send, ^{PgDn}
 return
 
 ;; 大きく移動
@@ -220,14 +222,16 @@ d::
 	Send, {Esc}
 return
 s::
-	Send, {Esc}
-	Send, ^k
-	Send, ^p
+	Send, ^{PgUp}
+;;	Send, {Esc}
+;;	Send, ^k
+;;	Send, ^p
 return
 f::
-	Send, {Esc}
-	Send, ^k
-	Send, ^n
+	Send, ^{PgDn}
+;;	Send, {Esc}
+;;	Send, ^k
+;;	Send, ^n
 return
 
 ;; メモ

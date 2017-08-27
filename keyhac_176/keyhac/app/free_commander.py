@@ -6,12 +6,16 @@ class KeyMap(base.KeyMap):
         self.exe_name = "FreeCommander.exe"
         self.class_name = "" #TfcFormを設定すると設定が反映されない
                 
-        self.initialize_app_mode()
-    
     def initialize_app_mode(self):
         self.is_file_selecting = False
-
-    def clear_app_mode(self):
+        
+    def initialize_nomal_mode(self):
+        pass
+    
+    def initialize_u0_mode(self):
+        pass
+    
+    def initialize_u1_mode(self):
         pass
 
     def extend_configure(self, app_keymap):

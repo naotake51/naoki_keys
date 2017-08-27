@@ -1,6 +1,5 @@
 from app import base
 from app.util import *        
-import time
 
 class KeyMap(base.KeyMap):
     def __init__(self):

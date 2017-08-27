@@ -6,38 +6,57 @@ class KeyMap():
     APP_MODE = 1
     mode = APP_MODE
     
+    nomal_key_is_down = False
+    app_key_is_down = False
+
     def __init__(self):
         self.exe_name = ""
         self.class_name = ""
+        
 
     def initialize_app_mode(self):
         pass
         
-    def clear_app_mode(self):
+    def initialize_nomal_mode(self):
         pass
-        
-    def extend_configure(self, keymap):
+    
+    def initialize_u0_mode(self):
         pass
+    
+    def initialize_u1_mode(self):
+        pass
+    
+    def down_nomal_mode_key(self):
+        if not self.nomal_key_is_down:
+            self.mode = self.NOMAL_MODE
+            self.initialize_u0_mode()
+            self.nomal_key_is_down = True
+    
+    def up_nomal_mode_key(self):
+        self.nomal_key_is_down = False
+        self.initialize_nomal_mode()        
 
+    def down_app_mode_key(self):
+        if not self.app_key_is_down:
+            self.mode = self.APP_MODE
+            self.initialize_u1_mode()
+            self.app_key_is_down = True
+    
+    def up_app_mode_key(self):
+        self.app_key_is_down = False
+        self.initialize_app_mode()        
+    
     def change_nomal_mode(self):
         self.mode = self.NOMAL_MODE
-    
+        self.initialize_nomal_mode()
+        
     def change_app_mode(self):
         self.mode = self.APP_MODE
         self.initialize_app_mode()
 
-    def put_nomal_mode_key(self):
-        if self.mode != self.NOMAL_MODE:
-            self.change_nomal_mode()
-    
-    def down_app_mode_key(self):
-        if self.mode != self.APP_MODE:
-            self.change_app_mode()
+    def extend_configure(self, keymap):
+        pass
         
-    def up_app_mode_key(self):
-        self.change_app_mode()
-        self.clear_app_mode()
-                    
     def a(self):pass
     def b(self):pass
     def c(self):pass
@@ -236,36 +255,35 @@ class KeyMap():
     def u2_y(self):pass
     def u2_z(self):pass
 
-    def up_u2(self):
-        print("ddd")
-        send("U-カタカナひらがな")
-    def put_u2(self):self.up_u2()
-    def put_u2_a(self):self.u2_a(); self.up_u2()
-    def put_u2_b(self):self.u2_b(); self.up_u2()
-    def put_u2_c(self):self.u2_c(); self.up_u2()
-    def put_u2_d(self):self.u2_d(); self.up_u2()
-    def put_u2_e(self):self.u2_e(); self.up_u2()
-    def put_u2_f(self):self.u2_f(); self.up_u2()
-    def put_u2_g(self):self.u2_g(); self.up_u2()
-    def put_u2_h(self):self.u2_h(); self.up_u2()
-    def put_u2_i(self):self.u2_i(); self.up_u2()
-    def put_u2_j(self):self.u2_j(); self.up_u2()
-    def put_u2_k(self):self.u2_k(); self.up_u2()
-    def put_u2_l(self):self.u2_l(); self.up_u2()
-    def put_u2_m(self):self.u2_m(); self.up_u2()
-    def put_u2_n(self):self.u2_n(); self.up_u2()
-    def put_u2_o(self):self.u2_o(); self.up_u2()
-    def put_u2_p(self):self.u2_p(); self.up_u2()
-    def put_u2_q(self):self.u2_q(); self.up_u2()
-    def put_u2_r(self):self.u2_r(); self.up_u2()
-    def put_u2_s(self):self.u2_s(); self.up_u2()
-    def put_u2_t(self):self.u2_t(); self.up_u2()
-    def put_u2_u(self):self.u2_u(); self.up_u2()
-    def put_u2_v(self):self.u2_v(); self.up_u2()
-    def put_u2_w(self):self.u2_w(); self.up_u2()
-    def put_u2_x(self):self.u2_x(); self.up_u2()
-    def put_u2_y(self):self.u2_y(); self.up_u2()
-    def put_u2_z(self):self.u2_z(); self.up_u2()
+    def put_u2(self):
+        if self.mode == self.NOMAL_MODE:
+            send("D-A")
+    def put_u2_a(self):send("D-A") if self.mode == self.NOMAL_MODE else self.u2_a()
+    def put_u2_b(self):send("D-B") if self.mode == self.NOMAL_MODE else self.u2_b()
+    def put_u2_c(self):send("D-C") if self.mode == self.NOMAL_MODE else self.u2_c()
+    def put_u2_d(self):send("D-D") if self.mode == self.NOMAL_MODE else self.u2_d()
+    def put_u2_e(self):send("D-E") if self.mode == self.NOMAL_MODE else self.u2_e()
+    def put_u2_f(self):send("D-F") if self.mode == self.NOMAL_MODE else self.u2_f()
+    def put_u2_g(self):send("D-G") if self.mode == self.NOMAL_MODE else self.u2_g()
+    def put_u2_h(self):send("D-H") if self.mode == self.NOMAL_MODE else self.u2_h()
+    def put_u2_i(self):send("D-I") if self.mode == self.NOMAL_MODE else self.u2_i()
+    def put_u2_j(self):send("D-J") if self.mode == self.NOMAL_MODE else self.u2_j()
+    def put_u2_k(self):send("D-K") if self.mode == self.NOMAL_MODE else self.u2_k()
+    def put_u2_l(self):send("D-L") if self.mode == self.NOMAL_MODE else self.u2_l()
+    def put_u2_m(self):send("D-M") if self.mode == self.NOMAL_MODE else self.u2_m()
+    def put_u2_n(self):send("D-N") if self.mode == self.NOMAL_MODE else self.u2_n()
+    def put_u2_o(self):send("D-O") if self.mode == self.NOMAL_MODE else self.u2_o()
+    def put_u2_p(self):send("D-P") if self.mode == self.NOMAL_MODE else self.u2_p()
+    def put_u2_q(self):send("D-Q") if self.mode == self.NOMAL_MODE else self.u2_q()
+    def put_u2_r(self):send("D-R") if self.mode == self.NOMAL_MODE else self.u2_r()
+    def put_u2_s(self):send("D-S") if self.mode == self.NOMAL_MODE else self.u2_s()
+    def put_u2_t(self):send("D-T") if self.mode == self.NOMAL_MODE else self.u2_t()
+    def put_u2_u(self):send("D-U") if self.mode == self.NOMAL_MODE else self.u2_u()
+    def put_u2_v(self):send("D-V") if self.mode == self.NOMAL_MODE else self.u2_v()
+    def put_u2_w(self):send("D-W") if self.mode == self.NOMAL_MODE else self.u2_w()
+    def put_u2_x(self):send("D-X") if self.mode == self.NOMAL_MODE else self.u2_x()
+    def put_u2_y(self):send("D-W") if self.mode == self.NOMAL_MODE else self.u2_y()
+    def put_u2_z(self):send("D-Z") if self.mode == self.NOMAL_MODE else self.u2_z()
     
     def m_a(self):pass
     def m_b(self):pass
@@ -535,7 +553,8 @@ class KeyMap():
         else:
             app_keymap = keymap.defineWindowKeymap()
     
-        app_keymap["29"] = self.put_nomal_mode_key
+        app_keymap["D-29"] = self.down_nomal_mode_key
+        app_keymap["U-29"] = self.up_nomal_mode_key
         app_keymap["D-28"] = self.down_app_mode_key
         app_keymap["U-28"] = self.up_app_mode_key
         # def notdoing():pass

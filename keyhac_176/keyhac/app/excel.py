@@ -1,47 +1,37 @@
-from app import base
+from app import editor
 from app.util import *        
 
-class KeyMap(base.KeyMap):
+class KeyMap(editor.KeyMap):
+    MOVING_TEXT_MODE = 0
+    SELECTING_TEXT_MODE = 1
+    SELECTING_KUKEI_TEXT_MODE = 2
+
     def __init__(self):
-        self.exe_name = "Clibor.exe"
-        self.class_name = "TFrm_Clibor"
-        
+        self.exe_name = "excel.exe"
+        self.class_name = "EXCEL*"
+
     def initialize_app_mode(self):
-        pass
+        print("initialize_app_mode")
+        self.cursor_mode = self.MOVING_TEXT_MODE
         
     def initialize_nomal_mode(self):
-        pass
+        print("initialize_nomal_mode")
     
     def initialize_u0_mode(self):
-        pass
+        print("initialize_u0_mode")
     
     def initialize_u1_mode(self):
-        pass
+        print("initialize_u1_mode")
+        send("C-Enter")
+        send("C-Enter")
 
-    def extend_configure(self, app_keymap):
-        app_keymap["D-Space"] = self.space
-
-    def put_nomal_mode_key(self):
-        pass
-
-    def space(self):
-        send("A-Enter")
-        
-    def w(self):
-        send("Esc") # Clibor終了 
-        
     # 新規作成、削除
     # def n(self):
-    #     send("C-S-N")
-    def b(self):
-        send("Del")
-        send("Enter")
+    # def b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    def c(self):
-        send("Enter")
-    def v(self):
-        send("A-Enter")
+    # def c(self):
+    # def v(self):
     # def x(self):
     # def z(self):
 
@@ -51,23 +41,39 @@ class KeyMap(base.KeyMap):
 
     # 移動
     def i(self):
-        send("Up")
+        if self.cursor_mode == self.MOVING_TEXT_MODE:
+            send("Up")
+        elif self.cursor_mode == self.SELECTING_TEXT_MODE:
+            send("S-Up")
+        elif self.cursor_mode == self.SELECTING_KUKEI_TEXT_MODE:
+            send("S-Up")
     def k(self):
-        send("Down")
+        if self.cursor_mode == self.MOVING_TEXT_MODE:
+            send("Down")
+        elif self.cursor_mode == self.SELECTING_TEXT_MODE:
+            send("S-Down")
+        elif self.cursor_mode == self.SELECTING_KUKEI_TEXT_MODE:
+            send("S-Down")
     def j(self):
-        send("Left")
+        if self.cursor_mode == self.MOVING_TEXT_MODE:
+            send("Left")
+        elif self.cursor_mode == self.SELECTING_TEXT_MODE:
+            send("S-Left")
+        elif self.cursor_mode == self.SELECTING_KUKEI_TEXT_MODE:
+            send("S-Left")
     def l(self):
-        send("Right")
+        if self.cursor_mode == self.MOVING_TEXT_MODE:
+            send("Right")
+        elif self.cursor_mode == self.SELECTING_TEXT_MODE:
+            send("S-Right")
+        elif self.cursor_mode == self.SELECTING_KUKEI_TEXT_MODE:
+            send("S-Right")
 
     # 大きく移動
-    def e(self):
-        send("Up", num = 5)
-    def d(self):
-        send("Down", num = 5)
-    def s(self):
-        send("Left")
-    def f(self):
-        send("Right")
+    # def e(self):
+    # def d(self):
+    # def s(self):
+    # def f(self):
 
     # メモ
     # def m(self):
@@ -86,9 +92,12 @@ class KeyMap(base.KeyMap):
     # 変更、一つ選択、グループ選択、グループ選択
     # def r(self):
     # def t(self):
-    # def y(self):
-    # def u(self):
-
+    def y(self):
+        send("Esc")
+        self.cursor_mode = self.SELECTING_KUKEI_TEXT_MODE
+    def u(self):
+        send("Esc")
+        self.cursor_mode = self.SELECTING_TEXT_MODE
 
 
     # 新規作成、削除
@@ -150,16 +159,24 @@ class KeyMap(base.KeyMap):
     # def u0_h(self):
 
     # 移動
-    # def u0_i(self):
-    # def u0_k(self):
-    # def u0_j(self):
-    # def u0_l(self):
+    def u0_i(self):
+        send("Up")            
+    def u0_k(self):
+        send("Down")
+    def u0_j(self):
+        send("Left")
+    def u0_l(self):
+        send("Right")
 
     # 大きく移動
-    # def u0_e(self):
-    # def u0_d(self):
-    # def u0_s(self):
-    # def u0_f(self):
+    # def u0_e(self): 半角切り替えにかぶる
+    #     send("C-Home")
+    def u0_d(self):
+        send("C=End")
+    def u0_s(self):
+        send("C-Up")
+    def u0_f(self):
+        send("C-Down")
 
     # メモ
     # def u0_m(self):
@@ -172,7 +189,10 @@ class KeyMap(base.KeyMap):
     # def u0_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def u0_r(self):
+    def u0_r(self):
+        send("C-Enter")
+        send("C-Enter")
+        send("F2")
     # def u0_t(self):
     # def u0_y(self):
     # def u0_u(self):

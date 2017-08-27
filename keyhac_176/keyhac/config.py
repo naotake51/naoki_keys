@@ -35,21 +35,23 @@ def configure(keymap):
     #各アプリのキーバインド設定
     from app import base
     from app import atom
-    from app import hidemaru
+    from app import excel
+    # from app import hidemaru
     from app import chrome
     from app import clibor
     from app import free_commander
-    from app import eclipse
-    from app import android_studio
+    # from app import eclipse
+    # from app import android_studio
 
     base.KeyMap().configure(keymap)
     atom.KeyMap().configure(keymap)
-    hidemaru.KeyMap().configure(keymap)
+    excel.KeyMap().configure(keymap)
+    # hidemaru.KeyMap().configure(keymap)
     chrome.KeyMap().configure(keymap)
     clibor.KeyMap().configure(keymap)
     free_commander.KeyMap().configure(keymap)
-    eclipse.KeyMap().configure(keymap)
-    android_studio.KeyMap().configure(keymap)
+    # eclipse.KeyMap().configure(keymap)
+    # android_studio.KeyMap().configure(keymap)
 
     #開発補助
     keymap_global["F5"] = keymap.command_ReloadConfig
