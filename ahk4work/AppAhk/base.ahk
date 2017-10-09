@@ -95,7 +95,7 @@ return
 ~+w::
 ~+x::
 ~+y::
-	Send, {Esc}
+;;	Send, {Esc}
 	ChangeNomalMainMode()
 return
 
@@ -149,19 +149,90 @@ v::Send, ^v
 r::return
 t::return
 y::return
-u::return
+
+u::
+	Send, {Esc}
+	base_cursor_mode := BASE_SELECTING_TEXT_MODE
+return
+
 
 g::Send, {Bs}
 h::Send, {Del}
 
-i::Send, {Up}
-k::Send, {Down}
-j::Send, {Left}
-l::Send, {Right}
-e::Send, {Up 5}
-d::Send, {Down 5}
-s::Send, {Left 5}
-f::Send, {Right 5}
+;; 移動
+i::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {Up}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Up}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, ^!{Up}
+return
+
+k::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {Down}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Down}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, ^!{Down}
+return
+
+j::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {Left}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Left}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, +{Left}
+return
+
+l::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {Right}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Right}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, +{Right}
+return
+
+;; 大きく移動
+e::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {PgUp}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Up 10}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, ^!{Up 10}
+return
+
+d::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {PgDn}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Down 10}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, ^!{Down 10}
+return
+
+s::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {Home}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{Home}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, +{Left 3}
+return
+
+f::
+	if (base_cursor_mode = BASE_MOVING_TEXT_MODE)
+		Send, {End}
+	else if (base_cursor_mode = BASE_SELECTING_TEXT_MODE)
+		Send, +{End}
+;;	else if (base_cursor_mode = BASE_SELECTING_KUKEI_TEXT_MODE)
+;;		Send, +{Right 3}
+return
+
 
 #if
 

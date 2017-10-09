@@ -1,7 +1,15 @@
 ;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe")) && (mode = APP_MAIN_MODE)
+#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_MAIN_MODE)
+
+;; ブックマーク
+m::
+	Send, ^!{F2}
+return
+!m::
+	Send, +^{F2}
+return
 
 ;; 新規作成、削除
 ;; n::return
@@ -204,7 +212,7 @@ return
 ;;----------------------------------------------------
 ;; アプリサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe")) && (mode = APP_SUB_MODE)
+#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_SUB_MODE)
 
 ;; 新規作成、削除
 n::
@@ -279,7 +287,7 @@ return
 ;;----------------------------------------------------
 ;; ノーマルサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe")) && (mode = NOMAL_SUB_MODE)
+#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = NOMAL_SUB_MODE)
 
 ;; 新規作成、削除
 ;; n::return

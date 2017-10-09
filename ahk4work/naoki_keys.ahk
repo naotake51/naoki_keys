@@ -14,6 +14,15 @@ global SELECT_APP_MODE := 4
 global mode := APP_MAIN_MODE
 
 ;;----------------------------------------------------
+;; base用変数
+;;----------------------------------------------------
+global BASE_MOVING_TEXT_MODE := 0
+global BASE_SELECTING_TEXT_MODE := 1
+global BASE_SELECTING_KUKEI_TEXT_MODE := 2
+
+global base_cursor_mode := BASE_MOVING_TEXT_MODE
+
+;;----------------------------------------------------
 ;; SublimeTextモード用変数
 ;;----------------------------------------------------
 global SUBLIME_MOVING_TEXT_MODE := 0
@@ -21,6 +30,7 @@ global SUBLIME_SELECTING_TEXT_MODE := 1
 global SUBLIME_SELECTING_KUKEI_TEXT_MODE := 2
 
 global sublime_cursor_mode := SUBLIME_MOVING_TEXT_MODE
+
 global sublime_window_is_tree_view := false
 
 ;;----------------------------------------------------
@@ -33,40 +43,6 @@ global ATOM_SELECTING_KUKEI_TEXT_MODE := 2
 global atom_cursor_mode := ATOM_MOVING_TEXT_MODE
 
 global atom_window_is_tree_view := false
-;;----------------------------------------------------
-;; 秀丸モード用変数
-;;----------------------------------------------------
-
-global HIDEMARU_MOVING_TEXT_MODE := 0
-global HIDEMARU_SELECTING_TEXT_MODE := 1
-global HIDEMARU_SELECTING_KUKEI_TEXT_MODE := 2
-
-global hidemaru_cursor_mode := HIDEMARU_MOVING_TEXT_MODE
-
-;;----------------------------------------------------
-;; Excelモード用変数
-;;----------------------------------------------------
-global EXCEL_HUMEI_MODE := 0
-global EXCEL_HENSYUU_MODE := 1
-global EXCEL_NYUURYOKU_MODE := 2
-
-global excel_mode := EXCEL_HUMEI_MODE
-
-global EXCEL_MOVING_CELL_MODE := 0
-global EXCEL_SELECTING_CELL_MODE := 1
-
-global excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
-
-global EXCEL_SELECTING_CELL_MODE_USER_SELECTING_CELL_STATE := 0
-global EXCEL_SELECTING_CELL_MODE_USER_MOVING_CELL_STATE := 1
-
-global excel_selecting_cell_mode_sub_status := EXCEL_SELECTING_CELL_MODE_USER_MOVING_CELL_STATE
-
-global EXCEL_MOVING_TEXT_MODE := 0
-global EXCEL_SELECTING_TEXT_MODE := 1
-global EXCEL_SELECTING_KUKEI_TEXT_MODE := 2
-
-global excel_text_cursor_mode := EXCEL_MOVING_TEXT_MODE
 
 ;;----------------------------------------------------
 ;; GoogleChromeモード用変数
@@ -93,7 +69,7 @@ global free_commander_is_file_selecting := false
 ;; 各アプリのモジュール
 ;;----------------------------------------------------
 #Include AppAhk\atom.ahk
-#Include AppAhk\explore.ahk
+;;#Include AppAhk\explore.ahk
 #Include AppAhk\chrome.ahk
 #Include AppAhk\clibor.ahk
 ;;#Include AppAhk\sublime.ahk
@@ -120,27 +96,22 @@ ChangeAppMainMode() {
 		Send, {Esc}		
 		sublime_cursor_mode := SUBLIME_MOVING_TEXT_MODE
 	}
-	else if (WinActive("ahk_exe atom.exe")) {
+	else if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe"))) {
 		Send, {Esc}		
 		atom_cursor_mode := ATOM_MOVING_TEXT_MODE
-	}
-	else if (WinActive("ahk_exe Hidemaru.exe")) {
-		Send, {Esc}		
-		hidemaru_cursor_mode := HIDEMARU_MOVING_TEXT_MODE
 	}
 	else if (WinActive("ahk_exe chrome.exe")) {
 		is_bookmark_view := false
 	}
-	else if (WinActive("ahk_exe EXCEL.EXE")) && (WinActive("ahk_class XLMAIN")) {
-		;;ExcelChangeNyuuryokuMode()
-		;;excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
-		;;excel_selecting_cell_mode_sub_status := EXCEL_SELECTING_CELL_MODE_USER_SELECTING_CELL_STATE
-	}
 	else if (WinActive("ahk_exe FreeCommander.EXE")) {
 		free_commander_is_file_selecting := false
 	}
-	else if (WinActive("ahk_exe Explorer.EXE")) {
-		Send, {Esc}
+;;	else if (WinActive("ahk_exe Explorer.EXE")) {
+;;		Send, {Esc}
+;;	}
+	else {
+		Send, {Esc}		
+		base_cursor_mode := BASE_MOVING_TEXT_MODE
 	}
 	mode := APP_MAIN_MODE
 }
