@@ -12,16 +12,16 @@
 #if (mode = NOMAL_SUB_MODE)
 
 n::
-	If GetKeyState("vk1Dsc07B", "P") {
+	If GetKeyState("sc07B", "P") {
 		IME_SET(1)
 	}
 	else {
-		Send, j
+		Send, n
 	}
 return
 
 e::
-	If GetKeyState("vk1Dsc07B", "P") {
+	If GetKeyState("sc07B", "P") {
 		IME_SET(0)
 	}
 	else {
@@ -42,24 +42,24 @@ return
 ~@::
 ~[::
 ~;::
-~vkE2sc073::	;; :のキーコード
+~sc073::	;; :のキーコード
 ~]::
 ~,::
 ~.::
 ~/::
-~vkBAsc028::	;; \のキーコード
+~sc028::	;; \のキーコード
 ~+-::
 ~+^::
 ~+\::
 ~+@::
 ~+[::
 ~+;::
-~+vkE2sc073::	;; :のキーコード
+~+sc073::	;; :のキーコード
 ~+]::
 ~+,::
 ~+.::
 ~+/::
-~+vkBAsc028::	;; \のキーコード
+~+sc028::	;; \のキーコード
 ~Space::
 ~!::
 ~"::
