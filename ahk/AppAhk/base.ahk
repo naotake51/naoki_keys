@@ -121,13 +121,7 @@ q::
 return
 
 w::
-	Send, {Ctrl down}
-	Send, {Ctrl up}
-	Send, {Ctrl down}
-	Send, {Ctrl up}
-	While (Not WinActive("ahk_exe Clibor.exe")) {
-		Sleep, 100
-	}
+	ActiveApp("ahk_exe Clibor.exe", "")
 	ChangeAppMainMode()
 return
 

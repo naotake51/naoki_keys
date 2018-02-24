@@ -77,6 +77,9 @@ global free_commander_is_file_selecting := false
 ;;#Include AppAhk\excel.ahk
 ;;#Include AppAhk\explorer.ahk
 ;;#Include AppAhk\asr.ahk
+#Include AppAhk\cygwin.ahk
+
+
 #Include AppAhk\base.ahk
 
 ;;----------------------------------------------------
@@ -109,6 +112,13 @@ ChangeAppMainMode() {
 ;;	else if (WinActive("ahk_exe Explorer.EXE")) {
 ;;		Send, {Esc}
 ;;	}
+	else if (WinActive("ahk_exe Clibor.exe")) {
+	}
+	else if (WinActive("ahk_exe mintty.exe")) {
+		Send, {Esc}
+		mode := NOMAL_MAIN_MODE
+		return
+	}
 	else {
 		Send, {Esc}		
 		base_cursor_mode := BASE_MOVING_TEXT_MODE

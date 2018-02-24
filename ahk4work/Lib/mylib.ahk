@@ -1,4 +1,26 @@
 ;;----------------------------------------------------
+;; アプリを有効にする
+;;----------------------------------------------------
+ActiveApp(app, run_code)
+{
+	if WinActive(app) {
+		WinGet, activate_id, ID, A, , ,
+		next_activate_id := _GetNextSameApplication(activate_id)
+		WinActivate, ahk_id %next_activate_id%, , ,
+	}
+	else if WinExist(app) {
+		WinActivate
+	}
+	else {
+		Run, %run_code%
+	}
+	
+	While (Not WinActive(app)) {
+		Sleep, 100
+	}
+}
+
+;;----------------------------------------------------
 ;; カーソル行をCygwinで実行する
 ;;----------------------------------------------------
 SendLineToCygwin() {
@@ -101,7 +123,7 @@ _GetSelectingText() {
 
 	;; SublimeText,Atomは、何も選択していない状態でコピーをすると一行コピーするため、
 	;; 最後の文字が改行であれば何も選択していないと推測する
-	if (WinActive("ahk_exe sublime_text.exe") || WinActive("ahk_exe atom.exe")) && (_GetLastChar(selecting_word) == "`n") {
+	if (WinActive("ahk_exe sublime_text.exe") || WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (_GetLastChar(selecting_word) == "`n") {
 		selecting_word := ""
 	}
 
