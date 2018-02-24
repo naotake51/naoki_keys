@@ -118,10 +118,10 @@ q::
 return
 
 w::
-	Send, {Ctrl down}
-	Send, {Ctrl up}
-	Send, {Ctrl down}
-	Send, {Ctrl up}
+	Send, {Alt down}
+	Send, {Alt up}
+	Send, {Alt down}
+	Send, {Alt up}
 	While (Not WinActive("ahk_exe Clibor.exe")) {
 		Sleep, 100
 	}
@@ -233,6 +233,40 @@ f::
 ;;		Send, +{Right 3}
 return
 
+1::
+	Send,#1
+return
+2::
+	Send,#2
+return
+3::
+	Send,#3
+return
+4::
+	Send,#4
+return
+5::
+	Send,#5
+return
+6::
+	Send,#6
+return
+7::
+	Send,#7
+return
+8::
+	Send,#8
+return
+9::
+	Send,#9
+return
+0::
+	Send,#+{Right}
+return
+
+~Shift::
+	ChangeNomalMainMode()
+return
 
 #if
 
@@ -351,25 +385,6 @@ SelectAppRoutine() {
 
 	IME_SET(_ime_status)
 	
-}
-
-ActiveApp(app, run_code)
-{
-	if WinActive(app) {
-		WinGet, activate_id, ID, A, , ,
-		next_activate_id := _GetNextSameApplication(activate_id)
-		WinActivate, ahk_id %next_activate_id%, , ,
-	}
-	else if WinExist(app) {
-		WinActivate
-	}
-	else {
-		Run, %run_code%
-	}
-	
-	While (Not WinActive(app)) {
-		Sleep, 100
-	}
 }
 
 #if (mode = SELECT_APP_MODE)

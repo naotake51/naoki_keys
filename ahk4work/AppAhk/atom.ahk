@@ -197,8 +197,12 @@ return
 		}
 	}
 	else {
-		Send, ^d
-		return
+		if (text = "") {
+			debug_code = error_log("Break %incl_num%", 3, '/vagrant/cakephp-2.x/app/tmp/logs/debug.log');
+		}
+		else {
+			debug_code = error_log(%text%, 3, '/vagrant/cakephp-2.x/app/tmp/logs/debug.log');
+		}
 	}
 
 	Send, {End}
