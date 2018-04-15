@@ -198,10 +198,10 @@ return
 	}
 	else {
 		if (text = "") {
-			debug_code = error_log("Break %incl_num%", 3, '/vagrant/cakephp-2.x/app/tmp/logs/debug.log');
+			debug_code = error_log("Break %incl_num%", 3, '/vagrant/cakeapp/logs/debug.log');
 		}
 		else {
-			debug_code = error_log(%text%, 3, '/vagrant/cakephp-2.x/app/tmp/logs/debug.log');
+			debug_code = error_log("Break %incl_num%\n" . print_r(%text%, true), 3, '/vagrant/cakeapp/logs/debug.log');
 		}
 	}
 

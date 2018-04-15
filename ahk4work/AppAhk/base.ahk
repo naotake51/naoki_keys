@@ -233,6 +233,28 @@ f::
 ;;		Send, +{Right 3}
 return
 
+~Shift::
+	ChangeNomalMainMode()
+return
+
+#if
+
+;;----------------------------------------------------
+;; アプリサブモード
+;;----------------------------------------------------
+#if (mode = APP_SUB_MODE)
+
+e::
+	Send, !{Esc}
+return
+d::
+	Send, !+{Esc}
+return
+f::
+return
+s::
+return
+
 1::
 	Send,#1
 return
@@ -262,28 +284,6 @@ return
 return
 0::
 	Send,#+{Right}
-return
-
-~Shift::
-	ChangeNomalMainMode()
-return
-
-#if
-
-;;----------------------------------------------------
-;; アプリサブモード
-;;----------------------------------------------------
-#if (mode = APP_SUB_MODE)
-
-e::
-	Send, !{Esc}
-return
-d::
-	Send, !+{Esc}
-return
-f::
-return
-s::
 return
 
 #if
