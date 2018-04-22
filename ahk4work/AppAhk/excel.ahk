@@ -167,6 +167,10 @@ return
 ;;----------------------------------------------------
 #if (WinActive("ahk_exe EXCEL.EXE") && WinActive("ahk_class XLMAIN")) && (mode = NOMAL_SUB_MODE)
 
+Enter::
+    Send, !{Enter}
+return
+
 ;; 新規作成、削除
 ;; n::return
 ;; b::return
@@ -179,7 +183,9 @@ return
 
 ;; 前を消す、後ろを消す
 ;; g::return
-;; h::return
+h::
+    Send, {BackSpace}
+return
 
 ;; 移動
 i::
