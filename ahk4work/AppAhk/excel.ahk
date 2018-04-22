@@ -17,7 +17,10 @@ c::
     excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 return
 v::
-    Send, ^v
+    Send, ^!v ;; 形式を選択して貼り付けウィンドウを表示
+    Send, !f ;; 数式(F)を選択
+    Send, {Enter} ;; 貼り付け
+
     excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 return
 x::
@@ -96,7 +99,9 @@ return
 ;; p::return
 
 ;; 調べる
-;; q::return
+q::
+    Send, ^+@ ;; ワークシートのセルの値と数式の表示を切り替えます
+return
 
 ;; 変更、一つ選択、グループ選択、グループ選択
 ;; r::return
@@ -115,12 +120,17 @@ return
 #if (WinActive("ahk_exe EXCEL.EXE") && WinActive("ahk_class XLMAIN")) && (mode = APP_SUB_MODE)
 
 ;; 新規作成、削除
-;; n::return
+n::
+    Send, +{F11} ;;シート挿入
+return
+
 ;; b::return
 
 ;; コピー、貼り付け、切り取り、元に戻す
 ;; c::return
-;; v::return
+v::
+    Send, ^!v ;; 形式を選択して貼り付けウィンドウを表示
+return
 ;; x::return
 ;; z::return
 
@@ -152,7 +162,9 @@ return
 ;; p::return
 
 ;; 調べる
-;; q::return
+q::
+    Send, ^+@ ;; ワークシートのセルの値と数式の表示を切り替えます
+return
 
 ;; 変更、一つ選択、グループ選択、グループ選択
 ;; r::return
