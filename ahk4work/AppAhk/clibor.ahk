@@ -5,6 +5,8 @@
 
 Space::
 	Send, !{Enter}
+	Sleep 100
+	Send, ^v
 return
 
 w::

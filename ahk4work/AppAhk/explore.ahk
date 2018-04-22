@@ -1,7 +1,7 @@
 ;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe Explorer.EXE") && (mode = APP_MAIN_MODE))
+#if ((WinActive("ahk_exe Explorer.EXE") && WinActive("ahk_class CabinetWClass")) && (mode = APP_MAIN_MODE))
 
 ;; 新規作成、削除
 n::
@@ -89,7 +89,7 @@ return
 ;;----------------------------------------------------
 ;; アプリサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe Explorer.EXE") && (mode = APP_SUB_MODE))
+#if ((WinActive("ahk_exe Explorer.EXE") && WinActive("ahk_class CabinetWClass")) && (mode = APP_SUB_MODE))
 
 ;; 新規作成、削除
 n::
@@ -144,7 +144,7 @@ return
 ;;----------------------------------------------------
 ;; ノーマルサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe Explorer.EXE") && (mode = NOMAL_SUB_MODE))
+#if ((WinActive("ahk_exe Explorer.EXE") && WinActive("ahk_class CabinetWClass")) && (mode = NOMAL_SUB_MODE))
 
 ;; 新規作成、削除
 ;; n::return

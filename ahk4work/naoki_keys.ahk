@@ -115,7 +115,8 @@ ChangeAppMainMode() {
 	}
 	else if (WinActive("ahk_exe Clibor.exe")) {
 	}
-	else if (WinActive("ahk_exe Explorer.EXE")) {
+	else if (WinActive("ahk_exe Explorer.EXE") && WinActive("ahk_class CabinetWClass")) {
+		;; エクスプローラー
 	}
 	else {
 		Send, {Esc}
