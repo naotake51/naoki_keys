@@ -52,13 +52,18 @@ global atom_window_is_tree_view := false
 global is_bookmark_view := false
 
 ;;----------------------------------------------------
-;; As/Rモード用変数
+;; Excelモード用変数
 ;;----------------------------------------------------
+global EXCEL_HUMEI_MODE := 0
+global EXCEL_HENSYUU_MODE := 1
+global EXCEL_NYUURYOKU_MODE := 2
 
-;;----------------------------------------------------
-;; FreeCommanderモード用変数
-;;----------------------------------------------------
-global free_commander_is_file_selecting := false
+global excel_mode := EXCEL_HUMEI_MODE
+
+global EXCEL_MOVING_CELL_MODE := 0
+global EXCEL_SELECTING_CELL_MODE := 1
+
+global excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 
 ;;----------------------------------------------------
 ;; ライブラリモジュール
@@ -74,10 +79,10 @@ global free_commander_is_file_selecting := false
 #Include AppAhk\clibor.ahk
 #Include AppAhk\explore.ahk
 #Include AppAhk\chrome.ahk
+#Include AppAhk\excel.ahk
 
 ;;#Include AppAhk\sublime.ahk
 ;;#Include AppAhk\hidemaru.ahk
-;;#Include AppAhk\excel.ahk
 ;;#Include AppAhk\asr.ahk
 ;;#Include AppAhk\cygwin.ahk
 
@@ -93,6 +98,18 @@ ChangeNomalMainMode() {
 }
 
 ChangeNomalSubMode() {
+	if (WinActive("ahk_exe EXCEL.EXE") && WinActive("ahk_class XLMAIN")) {
+		;; Excel
+		if (excel_mode != EXCEL_NYUURYOKU_MODE) {
+			Send, ^{Enter}
+			Send, ^{Enter}
+			Send, {Esc} ;;
+			Send, {F2}
+			excel_mode := EXCEL_NYUURYOKU_MODE
+		}
+		excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
+	}
+
 	mode := NOMAL_SUB_MODE
 }
 
@@ -117,6 +134,16 @@ ChangeAppMainMode() {
 	}
 	else if (WinActive("ahk_exe Explorer.EXE") && WinActive("ahk_class CabinetWClass")) {
 		;; エクスプローラー
+	}
+	else if (WinActive("ahk_exe EXCEL.EXE") && WinActive("ahk_class XLMAIN")) {
+		;; Excel
+		if (excel_mode != EXCEL_HENSYUU_MODE) {
+			Send, ^{Enter}
+			Send, ^{Enter}
+			Send, {Esc} ;;
+			excel_mode := EXCEL_HENSYUU_MODE
+		}
+		excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 	}
 	else {
 		Send, {Esc}

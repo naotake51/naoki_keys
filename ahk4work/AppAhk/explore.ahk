@@ -93,8 +93,10 @@ return
 
 ;; 新規作成、削除
 n::
+	Send, ^n
 return
 b::
+	Send, ^w
 return
 
 ;; コピー、貼り付け、切り取り、元に戻す
@@ -119,8 +121,10 @@ return
 ;; e::return
 ;; d::return
 s::
+	Send, +{Tab}
 return
 f::
+	Send, {Tab}
 return
 
 ;; メモ
