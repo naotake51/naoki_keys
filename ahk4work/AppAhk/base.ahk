@@ -255,35 +255,86 @@ return
 s::
 return
 
+i::
+	Send, {Up}
+return
+k::
+	Send, {Down}
+return
+j::
+	Send, {Left}
+return
+l::
+	Send, {Right}
+return
+
 1::
-	Send,#1
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 1
+	Send, %select_app_number%
 return
 2::
-	Send,#2
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 2
+	Send, %select_app_number%
 return
 3::
-	Send,#3
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 3
+	Send, %select_app_number%
 return
 4::
-	Send,#4
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 4
+	Send, %select_app_number%
 return
 5::
-	Send,#5
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 5
+	Send, %select_app_number%
 return
 6::
-	Send,#6
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 6
+	Send, %select_app_number%
 return
 7::
-	Send,#7
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 7
+	Send, %select_app_number%
 return
 8::
-	Send,#8
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 8
+	Send, %select_app_number%
 return
 9::
-	Send,#9
+	if (select_app_number = 0) {
+		Send, {LWin down}
+	}
+	select_app_number = 9
+	Send, %select_app_number%
 return
 0::
-	Send,#+{Right}
+	Send, #+{Right} ;;ウィンドウを反対側画面へ移動
+	Sleep, 100 ;; ウィンドウが反対側に移るまで待つ
+	Send, #{Up} ;;ウィンドウ最大化
 return
 
 #if

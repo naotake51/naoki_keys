@@ -22,6 +22,8 @@ global BASE_SELECTING_KUKEI_TEXT_MODE := 2
 
 global base_cursor_mode := BASE_MOVING_TEXT_MODE
 
+global select_app_number := 0 ;;
+
 ;;----------------------------------------------------
 ;; SublimeTextモード用変数
 ;;----------------------------------------------------
@@ -69,15 +71,15 @@ global free_commander_is_file_selecting := false
 ;; 各アプリのモジュール
 ;;----------------------------------------------------
 #Include AppAhk\atom.ahk
-;;#Include AppAhk\explore.ahk
-#Include AppAhk\chrome.ahk
 #Include AppAhk\clibor.ahk
+#Include AppAhk\explore.ahk
+#Include AppAhk\chrome.ahk
+
 ;;#Include AppAhk\sublime.ahk
 ;;#Include AppAhk\hidemaru.ahk
 ;;#Include AppAhk\excel.ahk
-;;#Include AppAhk\explorer.ahk
 ;;#Include AppAhk\asr.ahk
-#Include AppAhk\cygwin.ahk
+;;#Include AppAhk\cygwin.ahk
 
 
 #Include AppAhk\base.ahk
@@ -95,40 +97,36 @@ ChangeNomalSubMode() {
 }
 
 ChangeAppMainMode() {
+	if (select_app_number != 0) {
+		Send, {LWin up}
+		select_app_number := 0
+	}
+
 	if (WinActive("ahk_exe sublime_text.exe")) {
-		Send, {Esc}		
+		Send, {Esc}
 		sublime_cursor_mode := SUBLIME_MOVING_TEXT_MODE
 	}
 	else if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe"))) {
-		Send, {Esc}		
+		Send, {Esc}
 		atom_cursor_mode := ATOM_MOVING_TEXT_MODE
 	}
 	else if (WinActive("ahk_exe chrome.exe")) {
 		is_bookmark_view := false
 	}
-	else if (WinActive("ahk_exe FreeCommander.EXE")) {
-		free_commander_is_file_selecting := false
-	}
-;;	else if (WinActive("ahk_exe Explorer.EXE")) {
-;;		Send, {Esc}
-;;	}
 	else if (WinActive("ahk_exe Clibor.exe")) {
 	}
-	else if (WinActive("ahk_exe mintty.exe")) {
-		Send, {Esc}
-		mode := NOMAL_MAIN_MODE
-		return
+	else if (WinActive("ahk_exe Explorer.EXE")) {
 	}
 	else {
-		Send, {Esc}		
+		Send, {Esc}
 		base_cursor_mode := BASE_MOVING_TEXT_MODE
 	}
+
 	mode := APP_MAIN_MODE
 }
 
 ChangeAppSubMode() {
 	if (WinActive("ahk_exe sublime_text.exe")) {
-		Send, {Esc}
 		sublime_window_is_tree_view := false
 	}
 	else if (WinActive("ahk_exe atom.exe")) {

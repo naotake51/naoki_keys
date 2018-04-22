@@ -1,7 +1,7 @@
 ;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_MAIN_MODE)
+#if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_MAIN_MODE))
 
 ;; ブックマーク
 m::
@@ -198,7 +198,7 @@ return
 	}
 	else {
 		if (text = "") {
-			debug_code = error_log("Break %incl_num%", 3, '/vagrant/cakeapp/logs/debug.log');
+			debug_code = error_log("Break %incl_num%\n", 3, '/vagrant/cakeapp/logs/debug.log');
 		}
 		else {
 			debug_code = error_log("Break %incl_num%\n" . print_r(%text%, true), 3, '/vagrant/cakeapp/logs/debug.log');
