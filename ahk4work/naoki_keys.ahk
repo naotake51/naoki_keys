@@ -36,7 +36,7 @@ global sublime_cursor_mode := SUBLIME_MOVING_TEXT_MODE
 global sublime_window_is_tree_view := false
 
 ;;----------------------------------------------------
-;; ATOMモード用変数
+;; Atomモード用変数
 ;;----------------------------------------------------
 global ATOM_MOVING_TEXT_MODE := 0
 global ATOM_SELECTING_TEXT_MODE := 1
@@ -44,7 +44,14 @@ global ATOM_SELECTING_KUKEI_TEXT_MODE := 2
 
 global atom_cursor_mode := ATOM_MOVING_TEXT_MODE
 
-global atom_window_is_tree_view := false
+;;----------------------------------------------------
+;; Eclipseモード用変数
+;;----------------------------------------------------
+global ECLIPSE_MOVING_TEXT_MODE := 0
+global ECLIPSE_SELECTING_TEXT_MODE := 1
+global ECLIPSE_SELECTING_KUKEI_TEXT_MODE := 2
+
+global eclipse_cursor_mode := ECLIPSE_MOVING_TEXT_MODE
 
 ;;----------------------------------------------------
 ;; GoogleChromeモード用変数
@@ -80,6 +87,7 @@ global excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 #Include AppAhk\explore.ahk
 #Include AppAhk\chrome.ahk
 #Include AppAhk\excel.ahk
+#Include AppAhk\eclipse.ahk
 
 ;;#Include AppAhk\sublime.ahk
 ;;#Include AppAhk\hidemaru.ahk
@@ -126,6 +134,12 @@ ChangeAppMainMode() {
 	else if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe"))) {
 		Send, {Esc}
 		atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	}
+	else if (WinActive("ahk_exe javaw.exe")) {
+		Send, {Esc}
+		Send, {F12}
+		Send, {Esc}
+		eclipse_cursor_mode := ECLIPSE_MOVING_TEXT_MODE
 	}
 	else if (WinActive("ahk_exe chrome.exe")) {
 		is_bookmark_view := false
@@ -190,10 +204,8 @@ return
 
 #if (WinActive(".ahk"))
 
-F5::
-	MsgBox, 0, Autohotkey Naoki Keys Script, make and reload script, 5
-	Run, completion_code_maker.py
-	Sleep 1000
+;; リロード
+!r::
 	Reload
 return
 
