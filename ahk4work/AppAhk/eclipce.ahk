@@ -1,37 +1,46 @@
+
+^p::
+	Send, ^+r
+	ChangeNomalMainMode()
+return
+^+t::
+	Send, !{Left}
+return
+
 ;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
-#if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_MAIN_MODE))
+#if mode = APP_MAIN_MODE
 
 ;; ブックマーク
 m::
-	Send, ^!{F2}
+	;;Send, ^!{F2}
 return
 !m::
-	Send, +^{F2}
+	;;Send, +^{F2}
 return
 
 ;; 新規作成、削除
 ;; n::return
 b::
-	Send, ^+k
+	Send, ^d
 return
 
 ;; コピー、貼り付け、切り取り、元に戻す
 c::
 	Send, ^c
 	Send, {Esc}
-	atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	eclipse_cursor_mode := ECLIPSE_MOVING_TEXT_MODE
 return
 v::
 	Send, ^v
 	Send, {Esc}
-	atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	eclipse_cursor_mode := ECLIPSE_MOVING_TEXT_MODE
 return
 x::
 	Send, ^x
 	Send, {Esc}
-	atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	eclipse_cursor_mode := ECLIPSE_MOVING_TEXT_MODE
 return
 ;; z::return
 
@@ -41,38 +50,38 @@ return
 
 ;; 移動
 i::
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {Up}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Up}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Up}
 return
 
 k::
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {Down}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Down}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Down}
 return
 
 j::
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {Left}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Left}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Left}
 return
 
 l::
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {Right}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Right}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Right}
 return
 
@@ -83,11 +92,11 @@ e::
 		return
 	}
 
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {PgUp}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Up 10}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Up 10}
 return
 
@@ -97,11 +106,11 @@ d::
 		return
 	}
 
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {PgDn}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Down 10}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Down 10}
 return
 
@@ -111,11 +120,11 @@ s::
 		return
 	}
 
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {Home}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{Home}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Left 3}
 return
 
@@ -125,18 +134,17 @@ f::
 		return
 	}
 
-	if (atom_cursor_mode = ATOM_MOVING_TEXT_MODE)
+	if (eclipse_cursor_mode = ECLIPSE_MOVING_TEXT_MODE)
 		Send, {End}
-	else if (atom_cursor_mode = ATOM_SELECTING_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_TEXT_MODE)
 		Send, +{End}
-	else if (atom_cursor_mode = ATOM_SELECTING_KUKEI_TEXT_MODE)
+	else if (eclipse_cursor_mode = ECLIPSE_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Right 3}
 return
 
 ;; 探す
 o::
-	Send, ^f
-	ChangeNomalMainMode()
+	Send, ^o
 return
 ;; p::return
 
@@ -157,11 +165,11 @@ return
 return
 y::
 	Send, {Esc}
-	atom_cursor_mode := ATOM_SELECTING_KUKEI_TEXT_MODE
+	eclipse_cursor_mode := ECLIPSE_SELECTING_KUKEI_TEXT_MODE
 return
 u::
 	Send, {Esc}
-	atom_cursor_mode := ATOM_SELECTING_TEXT_MODE
+	eclipse_cursor_mode := ECLIPSE_SELECTING_TEXT_MODE
 return
 
 ;;;; 選択モードでは連続してshift + 移動キーを送り続きるが、次のキーを押下したときに
@@ -224,14 +232,14 @@ return
 ;;----------------------------------------------------
 ;; アプリサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = APP_SUB_MODE)
+#if mode = APP_SUB_MODE
 
 ;; 新規作成、削除
 n::
 	Send, ^n
 return
 b::
-	Send, ^w
+	Send, ^{F4}
 return
 
 ;; コピー、貼り付け、切り取り、元に戻す
@@ -252,30 +260,29 @@ return
 
 ;; 移動
 i::
+	Send, ^+g
 return
 k::
+	Send, {F3}
 return
 j::
+	Send, !{Left}
 return
 l::
+	Send, !{Right}
 return
 
 ;; 大きく移動
 ;;e::
 ;;return
-;;d::
-;;return
+d::
+	Send, ^m
+return
 s::
 	Send, ^{PgUp}
-;;	Senssd, {Esc}
-;;	Send, ^k
-;;	Send, ^p
 return
 f::
 	Send, ^{PgDn}
-;;	Send, {Esc}
-;;	Send, ^k
-;;	Send, ^n
 return
 
 ;; メモ
@@ -283,6 +290,7 @@ return
 
 ;; 探す
 ;; o::return
+
 ;; p::return
 
 ;; 調べる
@@ -299,7 +307,7 @@ return
 ;;----------------------------------------------------
 ;; ノーマルサブモード
 ;;----------------------------------------------------
-#if (WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe")) && (mode = NOMAL_SUB_MODE)
+#if mode = NOMAL_SUB_MODE
 
 ;; 新規作成、削除
 ;; n::return
