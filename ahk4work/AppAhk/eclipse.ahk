@@ -1,11 +1,14 @@
 
 #if (WinActive("ahk_exe javaw.exe"))
 ^p::
-	Send, ^+r
+	Send, ^+r ;;簡易検索
 	ChangeNomalMainMode()
 return
 ^+t::
-	Send, !{Left}
+	Send, !{Left} ;;閉じたファイルを開く
+return
+^h::
+	Send, ^l ;;指定行
 return
 #if
 
@@ -16,14 +19,16 @@ return
 
 ;; ブックマーク
 m::
-	;;Send, ^!{F2}
+	Send, ^+b ;;ブレークポイント
 return
 !m::
 	;;Send, +^{F2}
 return
 
 ;; 新規作成、削除
-;; n::return
+n::
+	;;
+return
 b::
 	Send, ^d
 return
@@ -146,28 +151,27 @@ return
 
 ;; 探す
 o::
-	Send, ^o
+	;;Send, ^o
 return
 ;; p::return
 
 ;; 調べる
 ;; q::return
 
-;; 変更、一つ選択、グループ選択、グループ選択
+;; 変更、一つ選.択、グループ選択、グループ選択
 r::
-	Send, !{F3}
-	ChangeNomalMainMode()
+	Send, +!r
 return
 t::
-	Send, ^d
-;;  Send, ^!t ;;翻訳機能実行
+	Send, ^+{Right} ;;右側のみ選択
 return
 +t::
-	Send, ^u
+	Send, ^+{Left} ;;左側のみ選択
 return
 y::
 	Send, {Esc}
-	eclipse_cursor_mode := ECLIPSE_SELECTING_KUKEI_TEXT_MODE
+	;;eclipse_cursor_mode := ECLIPSE_SELECTING_KUKEI_TEXT_MODE
+	Send, +!a
 return
 u::
 	Send, {Esc}
@@ -238,7 +242,7 @@ return
 
 ;; 新規作成、削除
 n::
-	Send, ^n
+	;;
 return
 b::
 	Send, ^{F4}
@@ -247,13 +251,11 @@ return
 ;; コピー、貼り付け、切り取り、元に戻す
 c::
 v::
-	Send, ^k
-	Send, {Left}
+	;;
 return
 x::
 z::
-	Send, ^k
-	Send, ^w
+	;;
 return
 
 ;; 前を消す、後ろを消す
