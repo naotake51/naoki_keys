@@ -1,4 +1,5 @@
 
+#if (WinActive("ahk_exe javaw.exe"))
 ^p::
 	Send, ^+r
 	ChangeNomalMainMode()
@@ -6,11 +7,12 @@ return
 ^+t::
 	Send, !{Left}
 return
+#if
 
 ;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
-#if mode = APP_MAIN_MODE
+#if (WinActive("ahk_exe javaw.exe")) && (mode = APP_MAIN_MODE)
 
 ;; ブックマーク
 m::
@@ -232,7 +234,7 @@ return
 ;;----------------------------------------------------
 ;; アプリサブモード
 ;;----------------------------------------------------
-#if mode = APP_SUB_MODE
+#if (WinActive("ahk_exe javaw.exe")) && (mode = APP_SUB_MODE)
 
 ;; 新規作成、削除
 n::
@@ -307,7 +309,7 @@ return
 ;;----------------------------------------------------
 ;; ノーマルサブモード
 ;;----------------------------------------------------
-#if mode = NOMAL_SUB_MODE
+#if (WinActive("ahk_exe javaw.exe")) && (mode = NOMAL_SUB_MODE)
 
 ;; 新規作成、削除
 ;; n::return
