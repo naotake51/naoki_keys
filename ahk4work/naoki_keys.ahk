@@ -45,6 +45,24 @@ global ATOM_SELECTING_KUKEI_TEXT_MODE := 2
 global atom_cursor_mode := ATOM_MOVING_TEXT_MODE
 
 ;;----------------------------------------------------
+;; Vscodeモード用変数
+;;----------------------------------------------------
+global VSCODE_MOVING_TEXT_MODE := 0
+global VSCODE_SELECTING_TEXT_MODE := 1
+global VSCODE_SELECTING_KUKEI_TEXT_MODE := 2
+
+global vscode_cursor_mode := VSCODE_MOVING_TEXT_MODE
+
+;;----------------------------------------------------
+;; IntelliJモード用変数
+;;----------------------------------------------------
+global INTELLIJ_MOVING_TEXT_MODE := 0
+global INTELLIJ_SELECTING_TEXT_MODE := 1
+global INTELLIJ_SELECTING_KUKEI_TEXT_MODE := 2
+
+global vscode_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
+
+;;----------------------------------------------------
 ;; Eclipseモード用変数
 ;;----------------------------------------------------
 global ECLIPSE_MOVING_TEXT_MODE := 0
@@ -82,7 +100,9 @@ global excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 ;;----------------------------------------------------
 ;; 各アプリのモジュール
 ;;----------------------------------------------------
-#Include AppAhk\atom.ahk
+;;#Include AppAhk\atom.ahk
+#Include AppAhk\vscode.ahk
+#Include AppAhk\intellij.ahk
 #Include AppAhk\clibor.ahk
 #Include AppAhk\explore.ahk
 #Include AppAhk\chrome.ahk
@@ -131,9 +151,13 @@ ChangeAppMainMode() {
 		Send, {Esc}
 		sublime_cursor_mode := SUBLIME_MOVING_TEXT_MODE
 	}
-	else if ((WinActive("ahk_exe atom.exe") || WinActive("ahk_exe Code.exe"))) {
+	else if (WinActive("ahk_exe atom.exe")) {
 		Send, {Esc}
 		atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	}
+	else if (WinActive("ahk_exe Code.exe")) {
+		Send, {Esc}
+		vscode_cursor_mode := VSCODE_MOVING_TEXT_MODE
 	}
 	else if (WinActive("ahk_exe javaw.exe")) {
 		Send, {Esc}
