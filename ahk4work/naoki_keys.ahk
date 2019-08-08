@@ -60,7 +60,7 @@ global INTELLIJ_MOVING_TEXT_MODE := 0
 global INTELLIJ_SELECTING_TEXT_MODE := 1
 global INTELLIJ_SELECTING_KUKEI_TEXT_MODE := 2
 
-global vscode_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
+global intellij_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
 
 ;;----------------------------------------------------
 ;; Eclipseモード用変数
@@ -154,6 +154,10 @@ ChangeAppMainMode() {
 	else if (WinActive("ahk_exe atom.exe")) {
 		Send, {Esc}
 		atom_cursor_mode := ATOM_MOVING_TEXT_MODE
+	}
+	else if (WinActive("ahk_exe idea64.exe")) {
+		Send, {Esc}
+		intellij_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
 	}
 	else if (WinActive("ahk_exe Code.exe")) {
 		Send, {Esc}

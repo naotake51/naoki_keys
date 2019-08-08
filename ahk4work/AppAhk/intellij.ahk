@@ -21,17 +21,17 @@ return
 c::
 	Send, ^c
 	Send, {Esc}
-	vscode_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
+	intellij_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
 return
 v::
 	Send, ^v
 	Send, {Esc}
-	vscode_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
+	intellij_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
 return
 x::
 	Send, ^x
 	Send, {Esc}
-	vscode_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
+	intellij_cursor_mode := INTELLIJ_MOVING_TEXT_MODE
 return
 ;; z::return
 
@@ -41,38 +41,38 @@ return
 
 ;; 移動
 i::
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {Up}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Up}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Up}
 return
 
 k::
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {Down}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Down}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Down}
 return
 
 j::
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {Left}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Left}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Left}
 return
 
 l::
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {Right}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Right}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Right}
 return
 
@@ -83,11 +83,11 @@ e::
 		return
 	}
 
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {PgUp}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Up 10}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Up 10}
 return
 
@@ -97,11 +97,11 @@ d::
 		return
 	}
 
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {PgDn}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Down 10}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, ^!{Down 10}
 return
 
@@ -111,11 +111,11 @@ s::
 		return
 	}
 
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {Home}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{Home}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Left 3}
 return
 
@@ -125,11 +125,11 @@ f::
 		return
 	}
 
-	if (vscode_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
+	if (intellij_cursor_mode = INTELLIJ_MOVING_TEXT_MODE)
 		Send, {End}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_TEXT_MODE)
 		Send, +{End}
-	else if (vscode_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
+	else if (intellij_cursor_mode = INTELLIJ_SELECTING_KUKEI_TEXT_MODE)
 		Send, +{Right 3}
 return
 
@@ -157,11 +157,11 @@ return
 return
 y::
 	Send, {Esc}
-	vscode_cursor_mode := INTELLIJ_SELECTING_KUKEI_TEXT_MODE
+	intellij_cursor_mode := INTELLIJ_SELECTING_KUKEI_TEXT_MODE
 return
 u::
 	Send, {Esc}
-	vscode_cursor_mode := INTELLIJ_SELECTING_TEXT_MODE
+	intellij_cursor_mode := INTELLIJ_SELECTING_TEXT_MODE
 return
 
 ;;;; 選択モードでは連続してshift + 移動キーを送り続きるが、次のキーを押下したときに
