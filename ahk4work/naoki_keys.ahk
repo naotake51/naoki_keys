@@ -13,6 +13,8 @@ global SELECT_APP_MODE := 4
 
 global mode := APP_MAIN_MODE
 
+global changing := FALSE
+
 ;;----------------------------------------------------
 ;; base用変数
 ;;----------------------------------------------------
@@ -293,17 +295,55 @@ return
 	IME_SET(ime_status)
 return
 
-sc07B::
-	ChangeNomalSubMode()
+
+SelctAppModeLoop() {
+	ChangeSelectAppMode()
 	while (GetKeyState("sc07B", "P")) {
 		Sleep, 100
 	}
+	ChangeAppMainMode()
+	Sleep, 100
+	ChangeAppMainMode()
+	Sleep, 100
+	ChangeAppMainMode()
+	Sleep, 100
+	ChangeAppMainMode()
+}
+
+sc07B::
+	if (changing = TRUE) {
+		return
+	}
+	changing := TRUE
+
+	ChangeNomalSubMode()
+	while (GetKeyState("sc07B", "P")) {
+		if (GetKeyState("sc079", "P")) {
+			SelctAppModeLoop()
+			changing := FALSE
+			return
+		}
+		Sleep, 100
+	}
 	ChangeNomalMainMode()
+	changing := FALSE
 return
+
 sc079::
+	if (changing = TRUE) {
+		return
+	}
+	changing := TRUE
+
 	ChangeAppSubMode()
 	while (GetKeyState("sc079", "P")) {
+		if (GetKeyState("sc07B", "P")) {
+			SelctAppModeLoop()
+			changing := FALSE
+			return
+		}
 		Sleep, 100
 	}
 	ChangeAppMainMode()
+	changing := FALSE
 return

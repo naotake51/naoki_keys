@@ -275,15 +275,9 @@ return
 ;;return
 s::
 	Send, ^{PgUp}
-;;	Senssd, {Esc}
-;;	Send, ^k
-;;	Send, ^p
 return
 f::
 	Send, ^{PgDn}
-;;	Send, {Esc}
-;;	Send, ^k
-;;	Send, ^n
 return
 
 ;; メモ

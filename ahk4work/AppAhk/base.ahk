@@ -139,9 +139,7 @@ w::
 	ChangeAppMainMode()
 return
 
-a::
-	SelectAppRoutine()
-return
+a::return
 
 b::return
 
@@ -256,10 +254,8 @@ return
 #if (mode = APP_SUB_MODE)
 
 e::
-	Send, !{Esc}
 return
 d::
-	Send, !+{Esc}
 return
 f::
 return
@@ -353,132 +349,41 @@ return
 ;;----------------------------------------------------
 ;; アプリ選択モード
 ;;----------------------------------------------------
-SelectAppRoutine() {
-
-	_ime_status := IME_GET()
-	
-	ChangeSelectAppMode()
-
-	while GetKeyState("a", "P") {
-		if GetKeyState("b", "P") {
-			ActiveApp("ahk_exe chrome.exe", "C:\Program Files\Google\Chrome\Application\chrome.exe")
-		}
-		else if GetKeyState("c", "P") {
-			ActiveApp("ahk_exe cmd.exe", "C:\WINDOWS\system32\cmd.exe")
-		}
-		else if GetKeyState("d", "P") {
-		}
-		else if GetKeyState("e", "P") {
-			ActiveApp("ahk_exe atom.exe", "C:\Users\naoki\AppData\Local\atom\Update.exe --processStart ""atom.exe""")
-			;;ActiveApp("ahk_exe sublime_text.exe", "C:\Program Files\Sublime Text 3\sublime_text.exe")
-			;;ActiveApp("ahk_exe Hidemaru.exe", "C:\Program Files\Hidemaru\Hidemaru.exe")
-		}
-		else if GetKeyState("f", "P") {
-			ActiveApp("ahk_exe FreeCommander.exe", "C:\Program Files\FreeCommander\FreeCommander.exe")
-		}
-		else if GetKeyState("g", "P") {
-		}
-		else if GetKeyState("h", "P") {
-		}
-		else if GetKeyState("i", "P") {
-		}
-		else if GetKeyState("j", "P") {
-		}
-		else if GetKeyState("k", "P") {
-		}
-		else if GetKeyState("l", "P") {
-		}
-		else if GetKeyState("m", "P") {
-		}
-		else if GetKeyState("n", "P") {
-		}
-		else if GetKeyState("o", "P") {
-		}
-		else if GetKeyState("p", "P") {
-		}
-		else if GetKeyState("q", "P") {
-		}
-		else if GetKeyState("r", "P") {
-			ActiveApp("ahk_exe psr.exe", "C:\WINDOWS\system32\psr.exe")
-		}
-		else if GetKeyState("s", "P") {
-			ActiveApp("ahk_exe EXCEL.EXE", "C:\Program Files\Microsoft Office 15\root\office15\EXCEL.EXE")
-		}
-		else if GetKeyState("t", "P") {
-			ActiveApp("ahk_exe mintty.exe", "C:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -")
-		}
-		else if GetKeyState("u", "P") {
-		}
-		else if GetKeyState("v", "P") {
-		}
-		else if GetKeyState("w", "P") {
-		}
-		else if GetKeyState("x", "P") {
-		}
-		else if GetKeyState("w", "P") {
-		}
-		else if GetKeyState("z", "P") {
-		}
-		else if GetKeyState(",", "P") {
-			WinGet, activate_id, ID, A, , ,
-			next_activate_id := _GetNextSameApplication(activate_id)
-			WinActivate, ahk_id %next_activate_id%, , ,
-		}
-		else if GetKeyState(".", "P") {
-			WinGet, activate_id, ID, A, , ,
-			next_activate_id := _GetNextSameApplication(activate_id, back := true)
-			WinActivate, ahk_id %next_activate_id%, , ,
-		}
-		else if GetKeyState("+", "P") {
-			Send, +{Tab}
-		}
-		else if GetKeyState("1", "P") {
-			Send, +#{Right}
-		}
-		else if GetKeyState("4", "P") {
-			Send, !{F4}
-		}
-		else {
-		}
-		Sleep, 100
-	}
-
-	ChangeAppMainMode()
-
-	IME_SET(_ime_status)
-	
-}
-
 #if (mode = SELECT_APP_MODE)
-a::
-	;; 何個もアプリ選択ルーチンが起動しないように
+
+i::
+return
+j::
+	Send, #^{Left}
+return
+k::
+	Send, #{Tab}
+return
+l::
+	Send, #^{Right}
 return
 
-b::
-c::
-d::
 e::
-f::
-g::
-h::
-i::
-j::
-k::
-l::
-m::
-n::
-o::
-p::
-q::
-r::
-s::
-t::
-u::
-v::
-w::
-x::
-y::
-z::
 return
+s::
+	Send, #+{Right} ;;ウィンドウを反対側画面へ移動
+	Sleep, 100 ;; ウィンドウが反対側に移るまで待つ
+	Send, #{Up} ;;ウィンドウ最大化
+return
+d::
+return
+f::
+	Send, #+{Right} ;;ウィンドウを反対側画面へ移動
+	Sleep, 100 ;; ウィンドウが反対側に移るまで待つ
+	Send, #{Up} ;;ウィンドウ最大化
+return
+
+n::
+	Send, #^d
+return
+b::
+	Send, #^{F4}
+return
+
 
 #if
