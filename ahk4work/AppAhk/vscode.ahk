@@ -138,7 +138,10 @@ o::
 	Send, ^f
 	ChangeNomalMainMode()
 return
-;; p::return
+p::
+	;; パスコピー
+	Send, +!c
+return
 
 ;; 調べる
 ;; q::return
@@ -292,7 +295,9 @@ return
 
 ;; 変更、一つ選択、グループ選択、グループ選択
 ;; r::return
-;; t::return
+t::
+	Send, ^@
+return
 ;; y::return
 ;; u::return
 

@@ -138,7 +138,10 @@ o::
 	Send, ^f
 	ChangeNomalMainMode()
 return
-;; p::return
+p::
+	;; パスコピー
+	Send, +!c
+return
 
 ;; 調べる
 ;; q::return

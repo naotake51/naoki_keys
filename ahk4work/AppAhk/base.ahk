@@ -111,7 +111,6 @@ return
 return
 
 m::
-	;; マーク機能。edsfと組み合わせて使う
 return
 
 o::
@@ -275,6 +274,11 @@ l::
 	Send, {Right}
 return
 
+m::
+	;; 選択されているテキストをC:\Users\naoki\Documents\memo.txtに書き込む
+	MemoSelectingText()
+return
+
 1::
 	if (select_app_number = 0) {
 		Send, {LWin down}
@@ -365,17 +369,16 @@ return
 
 e::
 return
+
 s::
-	Send, #+{Right} ;;ウィンドウを反対側画面へ移動
-	Sleep, 100 ;; ウィンドウが反対側に移るまで待つ
-	Send, #{Up} ;;ウィンドウ最大化
+	;; 変換＋無変換＋ｓはmyキーボードからは命令がいっていいないよう
+	Send, #^{Left}
 return
 d::
+	Send, #{Tab}
 return
 f::
-	Send, #+{Right} ;;ウィンドウを反対側画面へ移動
-	Sleep, 100 ;; ウィンドウが反対側に移るまで待つ
-	Send, #{Up} ;;ウィンドウ最大化
+	Send, #^{Right}
 return
 
 n::

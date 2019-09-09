@@ -301,13 +301,8 @@ SelctAppModeLoop() {
 	while (GetKeyState("sc07B", "P")) {
 		Sleep, 100
 	}
-	ChangeAppMainMode()
+	ChangeNomalMainMode()
 	Sleep, 100
-	ChangeAppMainMode()
-	Sleep, 100
-	ChangeAppMainMode()
-	Sleep, 100
-	ChangeAppMainMode()
 }
 
 sc07B::
