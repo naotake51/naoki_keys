@@ -272,10 +272,14 @@ l::
 return
 
 ;; 大きく移動
-;;e::
-;;return
-;;d::
-;;return
+e::
+	;; 実装へジャンプ
+	Send, ^!b
+return
+d::
+	;; 使用箇所
+	Send, !{F7}
+return
 s::
 	Send, ^{PgUp}
 ;;	Senssd, {Esc}

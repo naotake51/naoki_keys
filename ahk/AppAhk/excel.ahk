@@ -10,7 +10,7 @@ ExcelChangeNyuuryokuMode() {
 	excel_mode := EXCEL_NYUURYOKU_MODE
 }
 
-#if (WinActive("ahk_exe EXCEL.EXE")) && (WinActive("ahk_class XLMAIN")) && (mode = APP_MODE) && (app_mode_ = APP_MAIN_MODE)
+#if (WinActive("ahk_exe EXCEL.EXE") && WinActive("ahk_class XLMAIN")) && (mode = APP_MODE) && (app_mode_ = APP_MAIN_MODE)
 
 q::return
 
@@ -72,8 +72,6 @@ h::
 return
 
 i::
-	;;Msgbox, %excell_cell_cursor_mode%
-	;;Msgbox, %excel_selecting_cell_mode_sub_status%
 	if (excell_cell_cursor_mode = EXCEL_MOVING_CELL_MODE)
 		Send, {Up}
 	else if (excell_cell_cursor_mode = EXCEL_SELECTING_CELL_MODE)

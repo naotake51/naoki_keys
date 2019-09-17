@@ -287,8 +287,18 @@ return
 ;; m::return
 
 ;; 探す
-;; o::return
-;; p::return
+o::
+	;; エクスプローラーで表示
+	Send, ^+p
+	Send, File: Reveal in Explorer
+	Send, {Enter}
+return
+p::
+	;; パスコピー
+	Send, ^+p
+	Send, File: File: Copy Path of Active File
+	Send, {Enter}
+return
 
 ;; 調べる
 ;; q::return
