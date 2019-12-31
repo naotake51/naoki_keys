@@ -1,4 +1,3 @@
-
 #UseHook
 SetTitleMatchMode, 2 ;WinActiveの挙動を部分一致検索に変える。
 

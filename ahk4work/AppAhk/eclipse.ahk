@@ -1,4 +1,3 @@
-
 #if (WinActive("ahk_exe javaw.exe"))
 ^p::
 	Send, ^+r ;;簡易検索
