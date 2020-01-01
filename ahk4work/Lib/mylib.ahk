@@ -43,7 +43,7 @@ SendLineToCygwin() {
 	ActiveApp("ahk_exe mintty.exe", "C:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -")
 
 	;; コマンド実行
-	_PasteText(cmd_line)
+	PasteText(cmd_line)
 	Send, {Enter}
 
 	;; もともとアクティブだったウィンドウに切り替え
@@ -100,6 +100,33 @@ ActiveFileType() {
 }
 
 ;;----------------------------------------------------
+;; コピー文字列を取得する
+;;----------------------------------------------------
+GetCopyText() {
+	return Clipboard
+}
+
+;;----------------------------------------------------
+;; テキストを貼り付ける
+;;----------------------------------------------------
+PasteText(text) {
+	cb_bk := Clipboard
+	Clipboard := text
+	ClipWait, 2
+	if (ErrorLevel <> 0) {
+		MsgBox, "FAIL PasteText()"
+	}
+	if ("ahk_exe mintty.exe") {
+		Send, +{Ins}
+	}
+	else {
+		Send, ^v
+	}
+	Sleep, 500
+	Clipboard := cb_bk
+}
+
+;;----------------------------------------------------
 ;; カーソル位置の行を取得する
 ;;----------------------------------------------------
 _GetLineString() {
@@ -146,27 +173,6 @@ _GetSelectingText() {
 _GetLastChar(string_text) {
 	StringRight, last_char, string_text, 1
 	return last_char
-}
-
-;;----------------------------------------------------
-;; テキストを貼り付ける
-;;----------------------------------------------------
-_PasteText(text) {
-	cb_bk := ClipboardAll
-	Clipboard :=
-	Clipboard := text
-	ClipWait, 2
-	if (ErrorLevel <> 0) {
-		MsgBox, "FAIL PasteText()"
-	}
-	if ("ahk_exe mintty.exe") {
-		Send, +{Ins}
-	}
-	else {
-		Send, ^v
-	}
-	Sleep, 500
-	Clipboard := cb_bk
 }
 
 ;;----------------------------------------------------

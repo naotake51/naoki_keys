@@ -1,5 +1,17 @@
 
 ;;----------------------------------------------------
+;; コマンドパレットで実行
+;;----------------------------------------------------
+execCommandPalette(cmd_str)
+{
+	Send, ^+p
+	Sleep, 10
+	PasteText(cmd_str)
+	Sleep, 10
+	Send, {Enter}
+}
+
+;;----------------------------------------------------
 ;; アプリメインモード
 ;;----------------------------------------------------
 #if (WinActive("ahk_exe Code.exe") && (mode = APP_MAIN_MODE))
@@ -140,8 +152,6 @@ o::
 	ChangeNomalMainMode()
 return
 p::
-	;; パスコピー
-	Send, +!c
 return
 
 ;; 調べる
@@ -228,7 +238,7 @@ return
 	Send, {End}
 	Send, {Enter}
 
-	_PasteText(debug_code)
+	PasteText(debug_code)
 return
 
 #if
@@ -290,15 +300,19 @@ return
 ;; 探す
 o::
 	;; エクスプローラーで表示
-	Send, ^+p
-	Send, File: Reveal in Explorer
-	Send, {Enter}
+	;;execCommandPalette("File: Reveal in Explorer")
+
+	;; 自作したVSCodeの拡張機能と組み合わせ
+	Send, ^!o
 return
 p::
 	;; パスコピー
-	Send, ^+p
-	Send, File: File: Copy Path of Active File
-	Send, {Enter}
+	;;execCommandPalette("File Copy Relative Path of Active File")
+	;;Sleep, 100
+	;;StringReplace, Clipboard, Clipboard, \, /, All
+
+	;; 自作したVSCodeの拡張機能と組み合わせ
+	Send, ^!p
 return
 
 ;; 調べる

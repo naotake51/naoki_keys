@@ -229,7 +229,7 @@ return
 	Send, {End}
 	Send, {Enter}
 
-	_PasteText(debug_code)
+	PasteText(debug_code)
 return
 
 #if

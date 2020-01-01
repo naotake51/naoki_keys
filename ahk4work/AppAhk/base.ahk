@@ -122,7 +122,7 @@ q::
 	search_word := ActiveFileType() " " _GetSelectingText()
 	ActiveApp("ahk_exe chrome.exe", "C:\Program Files\Google\Chrome\Application\chrome.exe")
 	Send, ^t
-	_PasteText(search_word)
+	PasteText(search_word)
 	ChangeNomalMainMode()
 return
 

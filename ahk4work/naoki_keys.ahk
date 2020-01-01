@@ -264,9 +264,9 @@ F5::
 	ActiveApp("ahk_exe cmd.exe", "C:\WINDOWS\system32\cmd.exe")
 
 	;; コマンド実行
-	_PasteText("g++ -mwindows test.cpp")
+	PasteText("g++ -mwindows test.cpp")
 	Send, {Enter}
-	_PasteText("a.exe")
+	PasteText("a.exe")
 	Send, {Enter}
 
 	;; もともとアクティブだったウィンドウに切り替え
