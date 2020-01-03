@@ -117,6 +117,7 @@ global excell_cell_cursor_mode := EXCEL_MOVING_CELL_MODE
 
 
 #Include AppAhk\base.ahk
+#Include AppAhk\select_app.ahk
 
 ;;----------------------------------------------------
 ;; モード変更ルーチン
