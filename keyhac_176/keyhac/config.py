@@ -35,6 +35,7 @@ def configure(keymap):
     #各アプリのキーバインド設定
     from app import base
     from app import atom
+    from app import vscode
     from app import excel
     # from app import hidemaru
     from app import chrome
@@ -45,6 +46,7 @@ def configure(keymap):
 
     base.KeyMap().configure(keymap)
     atom.KeyMap().configure(keymap)
+    vscode.KeyMap().configure(keymap)
     excel.KeyMap().configure(keymap)
     # hidemaru.KeyMap().configure(keymap)
     chrome.KeyMap().configure(keymap)
