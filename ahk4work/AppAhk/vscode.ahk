@@ -210,12 +210,12 @@ return
 			debug_code = print("Break %incl_num%, %text% = " + str(%text%)) #debug code
 		}
 	}
-	else if (WinActive(".js")) {
+	else if (WinActive(".js") || WinActive(".jsx") || WinActive(".ts") || WinActive(".tsx") || WinActive(".vue")) {
 		if (text = "") {
 			debug_code = console.log("Break_%incl_num%");
 		}
 		else {
-			debug_code = console.log(%text%);
+			debug_code = console.log("Break_%incl_num% %text% : \n"); console.log(%text%);
 		}
 	}
 	else if (WinActive(".php")) {
