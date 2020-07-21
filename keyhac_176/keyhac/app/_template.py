@@ -1,7 +1,7 @@
 import base
 from util import *        
 
-class KeyMap(base.KeyMap):
+class App(base.App):
     def __init__(self):
         self.exe_name = ""
         self.class_name = ""

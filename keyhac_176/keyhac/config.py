@@ -7,12 +7,9 @@ from keyhac import *
 from app import util
 
 def test():
-    pass
+    pass    
 
 def configure(keymap):
-            
-    keymap.defineModifier( 29, "User0" ) #無変換
-    keymap.defineModifier( 28, "User1" ) #変換     
 
     keymap_global = keymap.defineWindowKeymap()
 
@@ -20,9 +17,8 @@ def configure(keymap):
     from app import base
     from app import vscode
 
-    base.KeyMap().configure(keymap)
-    vscode.KeyMap().configure(keymap)
+    base.App().configure(keymap)
+    vscode.App().configure(keymap)
 
     #開発補助
     keymap_global["F12"] = test
-    
