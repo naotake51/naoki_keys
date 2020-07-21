@@ -1,4 +1,5 @@
 from app.util import *        
+from app.ime import *        
 
 class KeyMap():
     

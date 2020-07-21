@@ -1,9 +1,4 @@
-import pyauto
 from keyhac import *
-
-import ctypes
-import threading
-import subprocess
 
 char_to_vk = {
     "BackSpace" : 8,
