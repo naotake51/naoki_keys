@@ -12,7 +12,7 @@ class KeyMap(base.KeyMap):
 
     # def initialize_nomal_mode(self):
     
-    # def initialize_nomalsub_mode(self):
+    # def initialize_subnomel_mode(self):
 
     # 新規作成、削除
     # def app_n(self):
@@ -103,43 +103,43 @@ class KeyMap(base.KeyMap):
 
 
     # 新規作成、削除
-    # def nomalsub_n(self):
-    # def nomalsub_b(self):
+    # def subnomel_n(self):
+    # def subnomel_b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    # def nomalsub_c(self):
-    # def nomalsub_v(self):
-    # def nomalsub_x(self):
-    # def nomalsub_z(self):
+    # def subnomel_c(self):
+    # def subnomel_v(self):
+    # def subnomel_x(self):
+    # def subnomel_z(self):
 
     # 前を消す、後ろを消す
-    # def nomalsub_g(self):
-    # def nomalsub_h(self):
+    # def subnomel_g(self):
+    # def subnomel_h(self):
 
     # 移動
-    # def nomalsub_i(self):
-    # def nomalsub_k(self):
-    # def nomalsub_j(self):
-    # def nomalsub_l(self):
+    # def subnomel_i(self):
+    # def subnomel_k(self):
+    # def subnomel_j(self):
+    # def subnomel_l(self):
 
     # 大きく移動
-    # def nomalsub_e(self):
-    # def nomalsub_d(self):
-    # def nomalsub_s(self):
-    # def nomalsub_f(self):
+    # def subnomel_e(self):
+    # def subnomel_d(self):
+    # def subnomel_s(self):
+    # def subnomel_f(self):
 
     # メモ
-    # def nomalsub_m(self):
+    # def subnomel_m(self):
 
     # 探す
-    # def nomalsub_o(self):
-    # def nomalsub_p(self):
+    # def subnomel_o(self):
+    # def subnomel_p(self):
 
     # 調べる
-    # def nomalsub_q(self):
+    # def subnomel_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def nomalsub_r(self):
-    # def nomalsub_t(self):
-    # def nomalsub_y(self):
-    # def nomalsub_u(self):
+    # def subnomel_r(self):
+    # def subnomel_t(self):
+    # def subnomel_y(self):
+    # def subnomel_u(self):

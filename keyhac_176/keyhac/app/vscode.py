@@ -1,7 +1,7 @@
-from app import editor
+from app import base
 from app.util import *        
 
-class KeyMap(editor.KeyMap):
+class KeyMap(base.KeyMap):
     def __init__(self):
         self.exe_name = "Code.exe"
         self.class_name = "Chrome_WidgetWin_1"
@@ -117,7 +117,6 @@ class KeyMap(editor.KeyMap):
     # 変更、一つ選択、グループ選択、グループ選択
     def app_r(self):
         send("A-F3")
-        self.change_nomal_mode()
     def app_t(self):
         send("C-D")
         # send("C-A-T") #翻訳機能実行
@@ -192,47 +191,47 @@ class KeyMap(editor.KeyMap):
     # def subapp_u(self):
 
     # 新規作成、削除
-    # def nomalsub_n(self):
-    # def nomalsub_b(self):
+    # def subnomal_n(self):
+    # def subnomal_b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    # def nomalsub_c(self):
-    # def nomalsub_v(self):
-    # def nomalsub_x(self):
-    # def nomalsub_z(self):
+    # def subnomal_c(self):
+    # def subnomal_v(self):
+    # def subnomal_x(self):
+    # def subnomal_z(self):
 
     # 前を消す、後ろを消す
-    # def nomalsub_g(self):
-    # def nomalsub_h(self):
+    # def subnomal_g(self):
+    # def subnomal_h(self):
 
     # 移動
-    def nomalsub_i(self):
+    def subnomal_i(self):
         send("Up")            
-    def nomalsub_k(self):
+    def subnomal_k(self):
         send("Down")
-    def nomalsub_j(self):
-        send("Esc")
-    def nomalsub_l(self):
-        send("Enter")
+    def subnomal_j(self):
+        send("Left")
+    def subnomal_l(self):
+        send("Right")
 
     # 大きく移動
-    # def nomalsub_e(self):
-    # def nomalsub_d(self):
-    # def nomalsub_s(self):
-    # def nomalsub_f(self):
+    # def subnomal_e(self):
+    # def subnomal_d(self):
+    # def subnomal_s(self):
+    # def subnomal_f(self):
 
     # メモ
-    # def nomalsub_m(self):
+    # def subnomal_m(self):
 
     # 探す
-    # def nomalsub_o(self):
-    # def nomalsub_p(self):
+    # def subnomal_o(self):
+    # def subnomal_p(self):
 
     # 調べる
-    # def nomalsub_q(self):
+    # def subnomal_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def nomalsub_r(self):
-    # def nomalsub_t(self):
-    # def nomalsub_y(self):
-    # def nomalsub_u(self):
+    # def subnomal_r(self):
+    # def subnomal_t(self):
+    # def subnomal_y(self):
+    # def subnomal_u(self):

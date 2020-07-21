@@ -19,11 +19,9 @@ def configure(keymap):
     #各アプリのキーバインド設定
     from app import base
     from app import vscode
-    from app import chrome
 
     base.KeyMap().configure(keymap)
     vscode.KeyMap().configure(keymap)
-    chrome.KeyMap().configure(keymap)
 
     #開発補助
     keymap_global["F12"] = test
