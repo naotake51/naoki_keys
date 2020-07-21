@@ -8,142 +8,138 @@ class KeyMap(base.KeyMap):
 
     # def initialize_app_mode(self):
         
+    # def initialize_appsub_mode(self):
+
     # def initialize_nomal_mode(self):
     
-    # def initialize_u0_mode(self):
-    
-    # def initialize_u1_mode(self):
+    # def initialize_nomalsub_mode(self):
 
     # 新規作成、削除
-    # def n(self):
-    # def b(self):
+    # def app_n(self):
+    # def app_b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    # def c(self):
-    # def v(self):
-    # def x(self):
-    # def z(self):
+    # def app_c(self):
+    # def app_v(self):
+    # def app_x(self):
+    # def app_z(self):
 
     # 前を消す、後ろを消す
-    # def g(self):
-    # def h(self):
+    # def app_g(self):
+    # def app_h(self):
 
     # 移動
-    # def i(self):
-    # def k(self):
-    # def j(self):
-    # def l(self):
+    # def app_i(self):
+    # def app_k(self):
+    # def app_j(self):
+    # def app_l(self):
 
     # 大きく移動
-    # def e(self):
-    # def d(self):
-    # def s(self):
-    # def f(self):
+    # def app_e(self):
+    # def app_d(self):
+    # def app_s(self):
+    # def app_f(self):
 
     # メモ
-    # def m(self):
-    # def m_e(self):
-    # def m_d(self):
-    # def m_s(self):
-    # def m_f(self):
+    # def app_m(self):
 
     # 探す
-    # def o(self):
-    # def p(self):
+    # def app_o(self):
+    # def app_p(self):
 
     # 調べる
-    # def q(self):
+    # def app_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def r(self):
-    # def t(self):
-    # def y(self):
-    # def u(self):
+    # def app_r(self):
+    # def app_t(self):
+    # def app_y(self):
+    # def app_u(self):
 
 
 
     # 新規作成、削除
-    # def u1_n(self):
-    # def u1_b(self):
+    # def appsub_n(self):
+    # def appsub_b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    # def u1_c(self):
-    # def u1_v(self):
-    # def u1_x(self):
-    # def u1_z(self):
+    # def appsub_c(self):
+    # def appsub_v(self):
+    # def appsub_x(self):
+    # def appsub_z(self):
 
     # 前を消す、後ろを消す
-    # def u1_g(self):
-    # def u1_h(self):
+    # def appsub_g(self):
+    # def appsub_h(self):
 
     # 移動
-    # def u1_i(self):
-    # def u1_k(self):
-    # def u1_j(self):
-    # def u1_l(self):
+    # def appsub_i(self):
+    # def appsub_k(self):
+    # def appsub_j(self):
+    # def appsub_l(self):
 
     # 大きく移動
-    # def u1_e(self):
-    # def u1_d(self):
-    # def u1_s(self):
-    # def u1_f(self):
+    # def appsub_e(self):
+    # def appsub_d(self):
+    # def appsub_s(self):
+    # def appsub_f(self):
 
     # メモ
-    # def u1_m(self):
+    # def appsub_m(self):
 
     # 探す
-    # def u1_o(self):
-    # def u1_p(self):
+    # def appsub_o(self):
+    # def appsub_p(self):
 
     # 調べる
-    # def u1_q(self):
+    # def appsub_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def u1_r(self):
-    # def u1_t(self):
-    # def u1_y(self):
-    # def u1_u(self):
+    # def appsub_r(self):
+    # def appsub_t(self):
+    # def appsub_y(self):
+    # def appsub_u(self):
 
 
 
     # 新規作成、削除
-    # def u0_n(self):
-    # def u0_b(self):
+    # def nomalsub_n(self):
+    # def nomalsub_b(self):
 
     # コピー、貼り付け、切り取り、元に戻す
-    # def u0_c(self):
-    # def u0_v(self):
-    # def u0_x(self):
-    # def u0_z(self):
+    # def nomalsub_c(self):
+    # def nomalsub_v(self):
+    # def nomalsub_x(self):
+    # def nomalsub_z(self):
 
     # 前を消す、後ろを消す
-    # def u0_g(self):
-    # def u0_h(self):
+    # def nomalsub_g(self):
+    # def nomalsub_h(self):
 
     # 移動
-    # def u0_i(self):
-    # def u0_k(self):
-    # def u0_j(self):
-    # def u0_l(self):
+    # def nomalsub_i(self):
+    # def nomalsub_k(self):
+    # def nomalsub_j(self):
+    # def nomalsub_l(self):
 
     # 大きく移動
-    # def u0_e(self):
-    # def u0_d(self):
-    # def u0_s(self):
-    # def u0_f(self):
+    # def nomalsub_e(self):
+    # def nomalsub_d(self):
+    # def nomalsub_s(self):
+    # def nomalsub_f(self):
 
     # メモ
-    # def u0_m(self):
+    # def nomalsub_m(self):
 
     # 探す
-    # def u0_o(self):
-    # def u0_p(self):
+    # def nomalsub_o(self):
+    # def nomalsub_p(self):
 
     # 調べる
-    # def u0_q(self):
+    # def nomalsub_q(self):
 
     # 変更、一つ選択、グループ選択、グループ選択
-    # def u0_r(self):
-    # def u0_t(self):
-    # def u0_y(self):
-    # def u0_u(self):
+    # def nomalsub_r(self):
+    # def nomalsub_t(self):
+    # def nomalsub_y(self):
+    # def nomalsub_u(self):
